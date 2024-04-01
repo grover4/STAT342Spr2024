@@ -1,0 +1,75 @@
+---
+title: "Homework 1"
+author: "Your Name Here"
+subtitle: "Spring 2024"
+header-includes:
+    - \usepackage{amsmath, amssymb}
+    - \usepackage{setspace} 
+output: pdf_document
+---
+
+\onehalfspacing
+
+```{r setup, include=FALSE}
+#Use this code chunk to include libraries, and set global options.
+knitr::opts_chunk$set(echo = TRUE)
+options(pillar.sigfig=6)
+library(tidyverse)
+```
+
+### Instructions
+
+- This homework is due in Gradescope on Wednesday April 10 by midnight PST. There is a 15 minute grace period and submissions made during this time will not be marked as late. Any work submitted past this period is considered late.  
+
+- Please answer the following questions in the order in which they are posed. 
+
+- Don't forget to (i) make a local copy this document for your work and to (ii) knit the document frequently to make sure there are no compilation errors. 
+
+- When you are done, download the PDF file as instructed in section and submit it in Gradescope. 
+* * *
+
+### Exercises
+
+1. (Two Researchers) In a sample of 1000 independent observations - $X_1,X_2,\dots,X_{1000}$ -  generated from a distribution with mean $\mu_0$ and known standard deviation 1, a
+researcher (call them researcher 1) testing $H_0:\mu_0=0$ against $H_1:\mu_0 > 0$ rejects the null hypothesis at level 0.01 (highly significant).  
+
+a. Find the rejection region for test conducted by researcher 1.  In other words, what is the minimum value of $\bar{x}_{obs}$ for which they will reject $H_0$? (Show your work; do any calculations in R showing your code)
+
+b. Another researcher (call them researcher 2) using a sample of 100 independent observations - $Y_1,Y_2,\dots, Y_{100}$ - generated from a distribution with mean $\nu_0$ and known standard deviation 1  tests $H_0:\nu_0=0$ against $H_1: \nu_0 > 0$ and rejects the null hypothesis at level 0.05 (significant). Find the rejection region for test conducted by researcher 2.  In other words, what is the minimum value of $\bar{y}_{obs}$ for which they will reject $H_0$? (Show your work)
+
+
+c. Which of $\mu_0$ or $\nu_0$ do you think is (likely) larger? Why? (There is no way to definitively know, I am interested in your ability to reason and explain ideas in your own words)
+
+
+2. (Rate of passage) The	number	of electrons	produced	by	the	passage	of	an	alpha	particle through a	container	of a	given	medium	is	known	to	have	a	Poisson	 distribution with (unknown) rate $\lambda_0$.	Let $X_1, X_2, \dots,X_{100}$ denote the electron production of one hundred randomly selected particles passing	through	the	container at various times. 
+Suppose we observe $\bar{x} = 9.4$. Calculate a 95% large sample confidence interval for the rate $\lambda_0$. Show your steps.
+
+    Hint: the rate $\lambda_0$ is just a population mean. What does the CLT say about the sampling distribution of $\bar{X}$?
+
+
+3. (Mean of means) Using a random sample of 25 observations - $X_1,X_2,\dots,X_{25}$ -  from a  population with (unknown) mean $\mu_1$ and (known) standard deviation $\sigma_1$, a 95\% large sample confidence interval for $\mu_1$ was $[1.37, 1.53]$. 
+
+   Similarly using an independent sample of 36 observations - $Y_1, Y_2, \dots, Y_{36}$ - from a population with (unknown) mean $\mu_2$ and (known) standard deviation $\sigma_2$, a 95\% large sample confidence interval for $\mu_2$ was $[1.17, 1.29]$.
+
+   Derive a large sample  95% confidence interval for  
+   $$\mu = \frac{\mu_1 + \mu_2}{2}$$
+   and calculate it for this example.
+   
+   Hint: see problem 1 on HW 6 from STAT 341. What is your estimator of $\mu$? Consider its sampling distribution according to the CLT.
+
+
+4. (Elvin makes noise) Elvin has developed a method for constructing a confidence interval for a parameter $\theta_0$ in a certain model, and is doing simulations to see how well it covers the true value of the parameter across many samples. He generates $B = 1,000$ samples, each of size $n$, from the model with $\theta_0=\frac{1}{2}$, and for each sample he calculates the interval using a confidence level of 95%, and then notes whether the confidence interval contains $\frac{1}{2}$ in it. You can see his results in the file `elvin_results.csv`.
+
+a. Write code to calculate his simulated coverage rate. Then print your answer. (You will need to read in the CSV file)
+
+```{r problem 4a, message= F, warning = F}
+#read in data and then print out simulated coverage rate
+
+```
+
+b. Since his simulated coverage rate isn't exactly 95%, Elvin is wondering if his simulation results indicate that the confidence level of his intervals differs from 0.95.  
+Suppose $X_i$ denotes whether the $ith$ confidence interval covers the true value $\frac{1}{2}$. Then $X_1,X_2,\dots, X_{1000} \overset{i.i.d.}{\sim} Bernoulli(\pi_0)$ where $\pi_0$ is the probability that a randomly generated confidence interval using Elvin's method will \emph{actually} cover the true value. Help Elvin calculate the P-value for testing $H_0: \pi_0 = 0.95$. What should he conclude about whether the difference in his results from 0.95 is due to simulation noise? 
+   
+c. How high or low must the simulated coverage rate be for Elvin to suspect that the true coverage rate of his intervals is not 95%? Explain. (Assume we are using the threshold of significance $\alpha = 0.05$. )
+   
+d. If Elvin had thought ahead, he could have done a calculation to ensure that his simulated coverage rate would be within a certain margin of error of the true  $\pi_0$. How large would $B$ have to be in order for him to be 98% confident that the simulated coverage would be within 0.005 of the true $\pi_0$.   (You may use $\pi_0 = \frac{1}{2}$ for the standard error in this calculation)
