@@ -1,0 +1,74 @@
+---
+title: "Problem Section 3"
+subtitle:  "The chi square distribution"
+graphics: yes
+output: pdf_document
+header-includes:
+    - \usepackage{amsmath, amssymb}
+    - \usepackage{framed}\definecolor{shadecolor}{rgb}{0.949,0.949,0.949}
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+\begin{shaded}
+
+\textbf{Learning Outcomes}
+
+The problems are designed to build conceptual understanding and problem-solving skills. The emphasis is on learning to find, evaluate and build confidence. The specific tasks include: 
+
+   - Identify the distribution of a sum of squares
+   
+   - Calculate the rejection region for a test given the Type 1 error rate
+   
+   - Conduct inference about a population variance in a normal sampling model
+   
+   - Examine assumptions in a practical context
+   
+   - Develop a method for combining results from independent samples
+   
+   - Back up and support work with relevant explanations
+
+
+\end{shaded}
+
+* * *
+
+### Exercises 
+
+1. Suppose $X_1,X_2,\dots,X_n \overset{i.i.d.}{\sim} Norm(\mu_0, \sigma_0)$. What is the distribution of $\sum\limits_{i=1}^{n} \frac{(X_i - \mu_0)^2}{\sigma^2_0}$?
+ 
+     Hint: Look at Definition 22.1 on page 8 of the slidedeck "Estimating $\sigma_0$".
+
+2. In testing $H_0:\sigma^2 = \sigma^2_{0,null}$ versus $H_1: \sigma^{2} > \sigma^2_{0,null}$ in the normal model, suppose we decide to reject $H_0$ whenever  
+$$\frac{(n-1) S^2}{\sigma^2_{0,null}} \geq k.$$ 
+
+    If $n=13$ and we want the test to have a Type 1 error rate of 0.05. What should we choose for $k$? 
+
+3. A stock analyst claims to have devised a mathematical technique for selecting high-quality mutual funds
+and promises that a client’s portfolio will have higher average ten-year annualized returns and lower volatility; that
+is, a smaller standard deviation. After ten years, one of the
+analyst’s twenty-four-stock portfolio showed an average ten-year annualized return of 11.5% and a standard deviation of 10.17%. The benchmarks for the type of funds
+considered are a mean of 10.10% and a standard deviation
+of 15.67%.
+
+    Suppose $X$ denotes the annualized ten-year return on a single stock in a twenty-four-stock portfolio selected by the analyst. Then we may assume $X_1,X_2,\dots,X_{24} \overset{i.i.d.}{\sim} Norm(\mu_0, \sigma_0)$. You are given $n = 24$, $\bar{x} = 11.5$\% and $s = 10.17$\%. 
+
+a. Conduct a significance test at the $\alpha = 0.05$ level that the portfolio beat the benchmark for the average return. That is test $H_0: \mu_0 = 10.1%$ versus $H_1: \mu_0 > 10.1%$. You may use R as a calculator.
+
+
+b. Conduct a significance test at the $\alpha = 0.05$ level that the portfolio beat the benchmark for the volatility. That is test $H_0: \sigma_0 = 15.67%$ versus $H_1: \sigma_0 < 15.67%$. You may use R as a calculator.
+
+c. Do you think the modeling assumptions we made are valid in this setting? If not, which ones might be violated?   
+
+
+4. Two researchers are both testing the same null hypothesis using separate sets of data. Researcher 1's test statistic is denoted by $T_1$ which follows a $\chi^2_{1}$ distribution under the null hypothesis. He observes a value $t_1 = 3.283$ . Researcher 2's test statistic is denoted by $T_2$ which also follows a $\chi^2_{1}$ distribution under the null hypothesis. She observes $t_2 = 3.537$
+
+a. Assuming that large values of the test statistic support the alternative, what are their respective P-values? 
+
+b. They want to combine their results since they figure two samples are better than one. How would you suggest they combine their results? Calculate the P-value using your idea. 
+
+    Hint: chi square distributions are reproducible.
