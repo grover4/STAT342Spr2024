@@ -1,0 +1,71 @@
+---
+title: "Problem Section 4"
+subtitle:  "The two sample t-test"
+graphics: yes
+output: pdf_document
+header-includes:
+    - \usepackage{amsmath, amssymb}
+    - \usepackage{framed}\definecolor{shadecolor}{rgb}{0.949,0.949,0.949}
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(infer)
+```
+
+\begin{shaded}
+
+\textbf{Learning Outcomes}
+
+The problems are designed to build conceptual understanding and problem-solving skills. The emphasis is on learning to find, evaluate and build confidence. The specific tasks include: 
+
+   - Perform a two sample t-test for comparing means
+   
+   - Perform a one-sample t-test for paired differences
+   
+   - Analyze which test would be appropriate in a given situation
+   
+   - Back up and support work with relevant explanations
+
+
+\end{shaded}
+
+* * *
+
+### Exercises 
+
+1. A group of college students interested in the
+effect of stepping exercises on the heart conducted an experiment in which subjects
+were randomly assigned to a stepping exercise on either a low step (coded "low") or a high step (coded "high"). Each subject started with a resting heart rate and performed the exercise for 3 minutes, at which time his or her exercise heart rate was measured.
+The data are in the file `exercise.csv`. 
+
+
+a. The students first want to see if the random assignment of subjects
+to the groups did a satisfactory job of equalizing the mean resting heart rates (`Resting_HR`) between the groups.  
+
+i. Read in the data `exercise.csv` into a dataframe called `exercise` and then print summaries (n, mean, sd) of the variable `Resting_HR` by `Step`. I am looking for output that looks like this table. 
+
+    \begin{tabular}{cccc}
+    Step & n & sample\_mean & sample\_sd \\ 
+    high & 15 & 82.8 & 8.32 \\
+    low & 15 & 77.2 & 9.45
+    \end{tabular}
+
+ii. Let's assume the conditions outlined in Theorem 23.1 hold. Namely that
+$$X_1,X_2,\dots X_{15} \overset{i.i.d.}{\sim} Norm(\mu_1, \sigma_0)$$
+independent of
+$$Y_1,Y_2,\dots,Y_{15} \overset{i.i.d.}{\sim} Norm(\mu_2, \sigma_0)$$
+where $X$ and $Y$ denote the resting heart rates for the low and high step groups. Use R as a calculator to calculate a 95\% t-confidence interval for $\mu_1 - \mu_2$ - the difference in mean resting heart rate between the groups. 
+
+iii. Verify your calculation from part ii using the R function `t_test` from the \textbf{infer} package.
+
+iv. What do you conclude from your confidence interval? Is 0 in the interval? What does this tell you about whether the randomization did a satisfactory job of equalizing the mean resting heart rate between the two groups?
+
+b. Next, they want to test whether the higher step resulted in a \emph{larger} gain in heart rate than did the lower step. 
+
+i. Mutate and add a new column called `di` to the `exercise` dataframe which measures the change in heart rate (`Exercise_HR` - `Resting_HR`). Then print  summaries (n, mean, sd) of the variable `di` by `Step`. 
+
+
+ii. Now repeat ii-iv from part a. for the `di`.
