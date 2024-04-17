@@ -52,25 +52,6 @@ d. Find $Var\left[ \hat{\sigma}_0^2 \right]$. (Please use the hint from part c f
 
 e. Is $\hat{\sigma}_0^2$ a consistent estimator? Why or why not?
 
-<!---
-2. (Bias-variance tradeoff.) In this part we will compare the Mean Squared Error (M.S.E.) of the estimators $S^2$ and $\hat{\sigma}_0^2$ from problem 1. Recall that for any estimator $\hat{\theta}_0$ of $\theta_0$, we have
-$$MSE(\hat{\theta}_0 ) = Var\left[ \hat{\theta}_0 \right] + Bias(\hat{\theta}_0)^2$$
-where 
-$$Bias(\hat{\theta}_0) = E\left[ \hat{\theta}_0 \right] - \theta_0$$
-
-a. Find $MSE(S^2)$, the mean squared error of $S^2$. Clearly show $Bias(S^2)$ and also $Var(S^2)$ in your answer. 
-
-    
-
-b. Show that $MSE(\hat{\sigma}_0^2) = \frac{\sigma_0^4\:(2n-1)}{n^2}$.
-Clearly show $Bias(\hat{\sigma}_0^2)$ and also $Var(\hat{\sigma}_0^2)$ in your answer. 
-
-
-c. Show that $MSE(\hat{\sigma}_0^2) < MSE(S^2)$ for any $n > 2$. 
-
-d. Based on your answer to part c, which estimator would you prefer?
-
---->
 
 2. (Dark Matter) Two	independent	research teams	claim	to	have	discovered	the	elusive	dark	matter.	They	have	used completely	
 independent	methods,	and	completely	different	statistical	tests	(although	in	both	
