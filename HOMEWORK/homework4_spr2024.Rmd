@@ -64,11 +64,11 @@ a. Create a table (`tabyl`) summarizing the race of the applicant and whether or
    
      Show the code, output and also write a couple of sentences summarizing what you learn from the data. (See slide 17 in slidedeck 23)
    
-b. Is there evidence of discrimination? Calculate a 95% confidence interval for the difference in callback rates for black and white applicants. Please state your interval clearly and then write your conclusion in context. (Please use R only as a calculator. Show your calculations and then interpret the confidence interval)
+b. Is there evidence of discrimination? Calculate a 95\% confidence interval for the difference in callback rates for black and white applicants. Please state your interval clearly and then write your conclusion in context. (Please use R only as a calculator. Show your calculations and then interpret the confidence interval)
   
   
   
-2. Suppose $$X_1,X_2,\dots,X_n \overset{i.i.d.}{\sim} Norm(\mu_1, \sigma_0)$$ independently of $$Y_1,Y_2,\dots,Y_m \overset {i.i.d.}{\sim} Norm(\mu_2, \sigma_0).$$
+2. (Pooled variance) Suppose $$X_1,X_2,\dots,X_n \overset{i.i.d.}{\sim} Norm(\mu_1, \sigma_0)$$ independently of $$Y_1,Y_2,\dots,Y_m \overset {i.i.d.}{\sim} Norm(\mu_2, \sigma_0).$$
 
     Consider the pooled estimator of $\sigma^2_0$:
     $$S^2_p = \frac{(n-1)}{n+m-2} S^2_1 + \frac{m-1}{n+m-2} S^2_2$$
@@ -85,13 +85,13 @@ b. Argue that
   
   
 3. The STAR (Student-Teacher Achievement Ratio) Project is a four year longitudinal study examining the effect of class size in early grade levels on educational performance and
-personal development.5 A longitudinal study is one in which the same participants are followed over time. This particular study lasted from 1985 to 1989 involved 11,601 students. During the four years of the study, students were randomly assigned to small classes, regular-sized
-classes, or regular-sized classes with an aid. In all, the experiment cost around $12 million. Even though the program stopped in 1989 after the first kindergarten class in the program finished third grade, collection of various measurements (e.g., performance on tests
-in eighth grade, overall high school GPA) continued through the end of participants’ high school attendance.
+personal development. This particular study lasted from 1985 to 1989 and involved 11,601 students. During the four years of the study, students were randomly assigned to small classes, regular-sized
+classes, or regular-sized classes with an aid.
 
-We will analyze just a portion of this data to investigate whether test scores are associated with race or not. The data file name is `star.csv`. The names and descriptions of variables in this data set are displayed in the codebook shown below. 
+    We will analyze just a portion of this data to investigate whether test scores are associated with race or not. The data file name is `star.csv`. The names and descriptions of variables in this data set are displayed in the codebook shown below. 
 
-\begin{table}[h]
+\begin{table}[phtb]
+
 \centering
 \begin{tabular}{|p{1in}|p{4.5in}|}   \hline
 \texttt{race}    & student’s race  \\
@@ -105,7 +105,7 @@ We will analyze just a portion of this data to investigate whether test scores a
 
 
 
-a. Fill in the table below to show summary statistics cross-classified by `classtype` and `race`. 
+a. Write code to calculate the summary statistics indicated in the table below. Then fill in the numbers in table. Be sure to echo your code. 
 
     \begin{table}[h]
     \caption{Achievement gap between White and Black kids on 4th grade reading and math}
