@@ -1,0 +1,83 @@
+---
+title: "Problem Section 6"
+subtitle:  "Numerical Methods"
+graphics: yes
+output: pdf_document
+header-includes:
+    - \usepackage{amsmath, amssymb}
+    - \usepackage{framed}\definecolor{shadecolor}{rgb}{0.949,0.949,0.949}
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(maxLik)
+```
+
+\begin{shaded}
+
+\textbf{Learning Outcomes}
+
+The problems are designed to build conceptual understanding and problem-solving skills. The emphasis is on learning to find, evaluate and build confidence. The specific tasks include: 
+
+  
+   - Use `maxLik` to perform Newton Raphson on a trinomial likelihood.
+   
+   - Derive the MLE of the odds of success in a binomial experiment. 
+   
+   - Back up and support work with relevant explanations
+
+
+\end{shaded}
+
+* * *
+
+### Exercises 
+
+1. (Hardy-Weinberg equilibrium) Recall the trinomial model for modeling gene frequencies in Example 24.10 where the likelihood function for the probability $\theta$ of the "a" allele was given by
+\begin{align*}
+L(\theta) & \propto \pi_1^{x} \times \pi_2^{y} \times \pi_3^{n - x - y}
+\end{align*}
+where $x$ and $y$ denote the number of individuals with genotypes AA and Aa respectively and 
+\begin{align*}
+\pi_1 &= (1- \theta)^2 \\
+\pi_2 &= 2 \theta (1-\theta)\\
+\pi_3 &= \theta^2
+\end{align*}
+
+    Write a function called `loglik_trinom` to calculate the likelihood function $L(\theta)$. Then use the R function `maxLik` to find the $\hat{\theta}_0^{mle}$ for the following data:
+    \begin{table}[h]
+    \centering
+    \caption{1,000 individuals grouped by genotype}
+    \begin{tabular}{ccc}
+    AA &  Aa & aa  \\ \hline
+    83 & 447 & 470 \\ \hline
+    \end{tabular}
+    \end{table}
+
+
+2. (Invariance of MLE) Suppose $X \sim Binom(n,\pi)$ where $0 \leq \pi \leq 1$. We saw in class that the likelihood function for $\pi$ is
+$$L(\pi) = \binom{n}{x} \pi^{x} \times (1-\pi)^{n-x}$$
+where $x = \sum\limits_{i=1}^{n} x_i$ is the number of successes in $n$ trials.
+
+a. Suppose we are interested in the parameterization
+$$\tau = \frac{ \pi}{1-\pi}$$
+which represents the odds of a success. Write $\pi$ in terms of $\tau$. That is, write $\pi$ in the form
+$$\pi = g(\tau)$$
+where $g$ is some function.
+
+b. Let $L^{\ast}(\tau)$ denote the likelihood function expressed in terms of the re-parametrization $\tau$. 
+In other words $L^{\ast}$ is the same as $L$ with the only difference that the $\pi$ needs to be replaced by $g(\tau)$. More precisely: 
+$$L^{\ast}(\tau) = L(g(\tau) ).$$
+Write the expression for $L^{\ast}(\tau)$. 
+
+c. Find $\hat{\tau}_0^{mle}$ the MLE of $\tau_0$ - the true but unknown value of $\tau_0$ - by maximizing $\ln(L^{\ast}(\tau))$ with respect to $\tau$. Show that 
+\begin{align*}
+\hat{\tau}_0^{mle} &= \frac{x}{n-x} = \frac{\hat{\pi_0}^{mle}}{1 - \hat{\pi_0}^{mle}}.
+\end{align*}
+
+    Hint: consider the cases $x=0$ and $x=n$ like we did in class for finding the MLE of $\pi$. Then differentiate $\ln(L^{ast})$ with respect to $\tau$ for $x$ in between these values to find the MLE. Put everything together.
+
+d. In your own words, explain what you learn about the behavior of the MLE from this example.
+
+   
