@@ -1,0 +1,83 @@
+---
+title: "Problem Section 7"
+subtitle:  "Likelihood Inference"
+graphics: yes
+output: pdf_document
+header-includes:
+    - \usepackage{amsmath, amssymb}
+    - \usepackage{framed}\definecolor{shadecolor}{rgb}{0.949,0.949,0.949}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(maxLik)
+```
+
+\begin{shaded}
+
+\textbf{Learning Outcomes}
+
+The problems are designed to build conceptual understanding and problem-solving skills. The emphasis is on learning to find, evaluate and build confidence. The specific tasks include: 
+
+  
+   - Perform inference using the large sample distribution of the MLE
+   
+   - Calculate the likelihood ratio test statistic for significance testing 
+   
+   - Back up and support work with relevant explanations
+
+
+\end{shaded}
+
+* * *
+
+## Exercises 
+
+1. Suppose the number of students who arrive late to each of 10 consecutive lectures can be modeled as independent draws from a Poisson distribution with rate $\lambda$:
+$$f_{\lambda}(x) = \frac{ e^{-\lambda}\:\lambda^{x}}{x!} \ \ \ x = 0,1,2,\dots$$
+The data are observed as follows $x_1=0, x_2=0,x_3=0,x_4=1,x_5=1,x_6=1,x_7=2,x_8=2,x_9=3,x_{10}=3$. \footnote{note: $x_i$ denotes the number of students who were late to class $i$}
+
+a. Calculate the MLE $\widehat{\lambda}_0^{mle}$ where $\lambda_0$ is the true value of the parameter which generated our data.   (see Example 24.5, slide 28 of slidedeck labeled 24.1-24.2)
+
+b. Find the observed information $$-\ell^{\prime \prime}(\widehat{\lambda}_0^{mle}) = - \left. \frac{d^2}{d\lambda^2} \ln\left[L(\lambda) \right] \right\rvert_{\widehat{\lambda}_0^{mle}}.$$
+
+c. Use the large sample normality of the MLE to calculate an approximate 95% confidence interval estimate for $\lambda_0$.
+
+d. Write code to examine the quality of the second-order approximation to the log-likelihood upon which your confidence interval from part c is based. 
+
+e. Suppose we wish to test $H_0: \lambda_0 = \lambda_0^{null}$ versus $H_1: \lambda_0 \neq \lambda_0^{null}$. Give an expression for the likelihood ratio test statistic:
+$$W = 2 \ln\left[ \frac{L(\widehat{\lambda}_0^{mle})}{L(\widehat{\lambda}_0^{null})} \right]$$ and calculate its value for this dataset.
+
+f. Calculate the (large sample) P-value for testing $H_0: \lambda_0^{null}=1$. That is assume $W \sim \chi^2_1$ under the null hypothesis. 
+
+g. Since $n=10$ is not really a large sample, an alternative approach is to calculate an empirical P-value. Take a look at chapter 20.4 where I show you how to calculate one for a Poisson model. Write code below to find the empirical P-value for the likelihood ratio test statistic $W$ from part e.
+
+    ```{r}
+    set.seed(175)
+
+    ```
+
+
+
+<!---
+2. Suppose $X$ is a discrete random variable with PMF $f(x)$ indexed by a parameter $\theta$as shown below. 
+\begin{table}[h]
+\centering
+\begin{tabular}{ccccc} 
+& $x=1$ & $x=2$ & $x=3$ & $x=4$ \\ \hline
+$\theta_0$ & 1/3 & 1/6 & 1/12 & 5/12 \\
+$\theta_1$ & 1/2 & 1/4 & 1/6 & 1/12 \\ \hline \\ 
+$W$ &  &   &  &  \\ \hline
+\end{tabular}
+\end{table}
+
+a. Say we want to test $H_0:\theta=\theta_0^{null}$ versus $H_1:\theta \neq \theta_0^{null}$. Calculate the likelihood ratio statistic 
+$$W= 2 \ln \left[ \frac{L(\widehat{\theta}_0^{mle})}{L(\theta_0^{null})} \right]$$ 
+for for each value of $x$ and write it in the last row of the table. (Hint: The parameter $\theta$ can only take two values, so you can find the MLE fairly easily)
+
+b. Write the sampling distribution of $W$ assuming $H_0$ is true. (Hint: $W$ is a discrete random variable) 
+
+c. Suppose we observe $x=3$. Calculate the P-value. What should we conclude at a 0.05 level of significance?
+
+--->
